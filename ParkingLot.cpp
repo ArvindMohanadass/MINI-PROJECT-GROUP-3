@@ -1,6 +1,7 @@
 #include "ParkingLot.hpp"
 #include "UserInputHandler.hpp"
 #include "AdminInputHandler.hpp"
+#include "MenuDisplay.hpp"
 #include <iostream>
 #include <fstream>   // For file operations
 #include <sstream>   // For string stream
@@ -204,4 +205,22 @@ void ParkingLot::handleUserInput() {
 
 void ParkingLot::handleAdminInput() {
     AdminInputHandler::handleAdminInput(*this);
+}
+
+void ParkingLot::enterMenu() {
+    std::string carNumberPlate;
+    std::cout << "Enter your car number plate: ";
+    std::cin >> carNumberPlate;
+    std::transform(carNumberPlate.begin(), carNumberPlate.end(), carNumberPlate.begin(), ::toupper);
+    if (carNumberPlate == adminCarNumberPlate) {
+        std::cout << "Welcome, Admin!\n";
+        handleAdminInput();
+    } else {
+        std::cout << "Welcome, car number plate " << carNumberPlate << "!\n";
+        handleUserInput();
+    }
+}
+
+void ParkingLot::displayAdminMenu() {
+    MenuDisplay::displayAdminMenu(*this);
 }

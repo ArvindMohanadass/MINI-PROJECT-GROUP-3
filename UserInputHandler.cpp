@@ -4,54 +4,6 @@
 #include <iostream>
 #include <algorithm> // For std::transform
 
-void ParkingLot::handleAdminInput() {
-    int choice;
-    std::string spotId;
-    double hourlyRate;
-    while (true) {
-        displayAdminMenu();
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
-        switch (choice) {
-            case 1:
-                for (const auto& spot : spots) {
-                    std::cout << "Spot ID: " << spot.id << ", Reserved: " << (spot.isReserved ? "Yes" : "No") << ", Checked In: " << (spot.isCheckedIn ? "Yes" : "No") << ", Plate Number: " << spot.plateNumber << "\n";
-                }
-                break;
-            case 2:
-                std::cout << "Total Revenue: $" << calculateRevenue() << std::endl;
-                break;
-            case 3:
-                std::cout << "Enter new spot ID: ";
-                std::cin >> spotId;
-                std::cout << "Enter hourly rate for new spot: ";
-                std::cin >> hourlyRate;
-                addParkingSpot(spotId, hourlyRate);
-                std::cout << "Parking spot added successfully.\n";
-                saveToCSV("parking_lot.csv");
-                break;
-            case 4:
-                std::cout << "Enter spot ID to remove: ";
-                std::cin >> spotId;
-                removeParkingSpot(spotId);
-                std::cout << "Parking spot removed successfully.\n";
-                saveToCSV("parking_lot.csv");
-                break;
-            case 5:
-                displayRevenue();
-                break;
-            case 6:
-                enterMenu(); // Return to car number plate entry
-                return;
-            case 7:
-                endProgram(); // End the program
-                return;
-            default:
-                std::cout << "Invalid choice. Please try again.\n";
-        }
-    }
-}
-
 void UserInputHandler::handleUserInput(ParkingLot& lot) {
     int choice;
     std::string spotId, plateNumber;
