@@ -1,0 +1,13 @@
+digraph G {
+    // Define nodes
+    node [shape=record, fontname="Arial"];
+
+    // ParkingSpot class
+    ParkingSpot [label="{ ParkingSpot | id : string | isReserved : bool | isCheckedIn : bool | hourlyRate : double | plateNumber : string }"];
+
+    // ParkingLot class
+    ParkingLot [label="{ ParkingLot | + ParkingLot(totalSpots: int) | + reserveSpot(spotId: string, plateNumber: string) : bool | + releaseSpot(spotId: string) : bool | + checkInSpot(spotId: string, plateNumber: string) : bool | + checkOutSpot(spotId: string, plateNumber: string) : bool | + calculateRevenue() : double | + displayMenu() | + handleUserInput() | + enterMenu() | + displayAvailableSpots() : void | + displayAdminMenu() | + handleAdminInput() | + addParkingSpot(spotId: string, hourlyRate: double) | + removeParkingSpot(spotId: string) | + findAvailableSpot() : string | + endProgram() : void | + saveToCSV(filename: string) : void | + loadFromCSV(filename: string) : void | + checkReservations() : void | + trackRevenue(plateNumber: string, amount: double) : void | + displayRevenue() | + displayTotalRevenue() : void }"];
+
+    // Define the relationship between ParkingLot and ParkingSpot
+    ParkingLot -> ParkingSpot [label="has multiple"];
+}

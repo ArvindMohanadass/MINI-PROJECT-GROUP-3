@@ -1,0 +1,65 @@
+digraph ParkingLotSystem {
+    rankdir=TB;        // Top to Bottom layout
+    ranksep=3;         // Increased space between ranks (nodes)
+    nodesep=2;         // Increased space between nodes
+
+    // Nodes for classes
+    node [shape=rectangle, style=filled, fillcolor=lightblue, width=3.5, height=1.5, fontsize=14];  // Larger nodes with bigger text
+
+    // Define the main class and method clusters
+    subgraph cluster_main {
+        label="Main Flow";
+        style=dashed;
+        Main [label="Main\n+ lot.enterMenu()"];
+        // Make the main node larger and clearer
+    }
+
+    subgraph cluster_parkinglot {
+        label="ParkingLot Class";
+        style=dotted;
+        ParkingLot [label="ParkingLot\n+ reserveSpot()\n+ releaseSpot()\n+ checkInSpot()\n+ checkOutSpot()"];
+
+        // Methods inside ParkingLot grouped into categories
+        MethodGroup1 [label="Spot Management\n+ reserveSpot()\n+ releaseSpot()\n+ checkInSpot()\n+ checkOutSpot()", shape=rect, width=3.5, height=1.5];
+        MethodGroup2 [label="Revenue Management\n+ calculateRevenue()\n+ trackRevenue()", shape=rect, width=3.5, height=1.5];
+        MethodGroup3 [label="File Operations\n+ saveToCSV()\n+ loadFromCSV()", shape=rect, width=3.5, height=1.5];
+        MethodGroup4 [label="User Interaction\n+ displayMenu()\n+ checkReservations()", shape=rect, width=3.5, height=1.5];
+    }
+
+    subgraph cluster_userinput {
+        label="UserInputHandler Class";
+        style=dotted;
+        UserInputHandler [label="UserInputHandler\n+ handleUserInput()"];
+    }
+
+    subgraph cluster_admininput {
+        label="AdminInputHandler Class";
+        style=dotted;
+        AdminInputHandler [label="AdminInputHandler\n+ handleAdminInput()"];
+    }
+
+    // Connect classes and methods
+    Main -> ParkingLot [label="Create instance of ParkingLot"];
+    ParkingLot -> UserInputHandler [label="handleUserInput()"];
+    ParkingLot -> AdminInputHandler [label="handleAdminInput()"];
+
+    // Methods in ParkingLot (grouped into logical sections)
+    ParkingLot -> MethodGroup1;
+    ParkingLot -> MethodGroup2;
+    ParkingLot -> MethodGroup3;
+    ParkingLot -> MethodGroup4;
+
+    // File operations inside ParkingLot
+    MethodGroup3 -> ParkingLot [label="saveToCSV()"];
+    MethodGroup3 -> ParkingLot [label="loadFromCSV()"];
+    MethodGroup2 -> ParkingLot [label="trackRevenue()"];
+    
+    // User Input and Admin Menu flow
+    UserInputHandler -> ParkingLot [label="handleUserInput()"];
+    AdminInputHandler -> ParkingLot [label="handleAdminInput()"];
+
+    // Additional edges (Revenue and UI methods)
+    MethodGroup2 -> ParkingLot [label="calculateRevenue()"];
+    MethodGroup4 -> ParkingLot [label="displayMenu()"];
+    MethodGroup4 -> ParkingLot [label="checkReservations()"];
+}

@@ -1,0 +1,45 @@
+digraph MenuFlow {
+    node [shape=box, style=rounded, fontname="Helvetica"];
+
+    MainMenu [label="Main Menu\n=====================\n1. Reserve a Spot\n2. Release a Spot\n3. Check In\n4. Check Out\n5. Check Reservations\n6. Exit"];
+    AdminMenu [label="Admin Menu\n=====================\n1. View All Spots\n2. Calculate Revenue\n3. Add Parking Spot\n4. Remove Parking Spot\n5. View Revenue Table\n6. Exit to Main Menu\n7. End Program"];
+    Exit [label="Exit Program"];
+    MainMenuOption1 [label="Reserve a Spot"];
+    MainMenuOption2 [label="Release a Spot"];
+    MainMenuOption3 [label="Check In"];
+    MainMenuOption4 [label="Check Out"];
+    MainMenuOption5 [label="Check Reservations"];
+    MainMenuOption6 [label="Exit"];
+
+    AdminMenuOption1 [label="View All Spots"];
+    AdminMenuOption2 [label="Calculate Revenue"];
+    AdminMenuOption3 [label="Add Parking Spot"];
+    AdminMenuOption4 [label="Remove Parking Spot"];
+    AdminMenuOption5 [label="View Revenue Table"];
+    AdminMenuOption6 [label="Exit to Main Menu"];
+    AdminMenuOption7 [label="End Program"];
+
+    MainMenu -> MainMenuOption1 [label="1"];
+    MainMenu -> MainMenuOption2 [label="2"];
+    MainMenu -> MainMenuOption3 [label="3"];
+    MainMenu -> MainMenuOption4 [label="4"];
+    MainMenu -> MainMenuOption5 [label="5"];
+    MainMenu -> MainMenuOption6 [label="6"];
+    MainMenuOption6 -> Exit [label="Exit"];
+
+    MainMenuOption1 -> AdminMenu [label="Admin Options"];
+    MainMenuOption2 -> AdminMenu [label="Admin Options"];
+    MainMenuOption3 -> AdminMenu [label="Admin Options"];
+    MainMenuOption4 -> AdminMenu [label="Admin Options"];
+    MainMenuOption5 -> AdminMenu [label="Admin Options"];
+
+    AdminMenu -> AdminMenuOption1 [label="1"];
+    AdminMenu -> AdminMenuOption2 [label="2"];
+    AdminMenu -> AdminMenuOption3 [label="3"];
+    AdminMenu -> AdminMenuOption4 [label="4"];
+    AdminMenu -> AdminMenuOption5 [label="5"];
+    AdminMenu -> AdminMenuOption6 [label="6"];
+    AdminMenu -> AdminMenuOption7 [label="7"];
+    AdminMenuOption6 -> MainMenu [label="Back to Main Menu"];
+    AdminMenuOption7 -> Exit [label="End Program"];
+}

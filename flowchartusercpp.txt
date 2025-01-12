@@ -1,0 +1,60 @@
+digraph ParkingLotSystem {
+    node [shape=box, style=rounded];
+
+    // ParkingLot class flow
+    ParkingLot [label="ParkingLot" shape=ellipse];
+    handleAdminInput [label="handleAdminInput" shape=box];
+    displayAdminMenu [label="displayAdminMenu" shape=box];
+    calculateRevenue [label="calculateRevenue" shape=box];
+    addParkingSpot [label="addParkingSpot" shape=box];
+    removeParkingSpot [label="removeParkingSpot" shape=box];
+    saveToCSV [label="saveToCSV" shape=box];
+    displayRevenue [label="displayRevenue" shape=box];
+    enterMenu [label="enterMenu" shape=box];
+    endProgram [label="endProgram" shape=box];
+    
+    // UserInputHandler class flow
+    UserInputHandler [label="UserInputHandler" shape=ellipse];
+    handleUserInput [label="handleUserInput" shape=box];
+    MenuDisplay [label="MenuDisplay" shape=ellipse];
+    displayMenu [label="displayMenu" shape=box];
+    displayAvailableSpots [label="displayAvailableSpots" shape=box];
+    reserveSpot [label="reserveSpot" shape=box];
+    releaseSpot [label="releaseSpot" shape=box];
+    checkInSpot [label="checkInSpot" shape=box];
+    findAvailableSpot [label="findAvailableSpot" shape=box];
+    checkOutSpot [label="checkOutSpot" shape=box];
+    checkReservations [label="checkReservations" shape=box];
+
+    // Admin menu flow
+    handleAdminInput -> displayAdminMenu [label="Display menu"];
+    handleAdminInput -> calculateRevenue [label="Choice 2"];
+    handleAdminInput -> addParkingSpot [label="Choice 3"];
+    handleAdminInput -> removeParkingSpot [label="Choice 4"];
+    handleAdminInput -> displayRevenue [label="Choice 5"];
+    handleAdminInput -> enterMenu [label="Choice 6"];
+    handleAdminInput -> endProgram [label="Choice 7"];
+
+    // User menu flow
+    handleUserInput -> MenuDisplay [label="Display menu"];
+    handleUserInput -> displayAvailableSpots [label="Choice 1"];
+    handleUserInput -> reserveSpot [label="Reserve spot"];
+    handleUserInput -> releaseSpot [label="Choice 2"];
+    handleUserInput -> checkInSpot [label="Choice 3"];
+    handleUserInput -> findAvailableSpot [label="Auto-assign spot"];
+    handleUserInput -> checkOutSpot [label="Choice 4"];
+    handleUserInput -> checkReservations [label="Choice 5"];
+    handleUserInput -> enterMenu [label="Choice 6"];
+
+    // Connections for spot management
+    addParkingSpot -> saveToCSV [label="Save to CSV"];
+    removeParkingSpot -> saveToCSV [label="Save to CSV"];
+    checkInSpot -> checkReservations [label="Check-in spot"];
+    checkOutSpot -> checkReservations [label="Check-out spot"];
+    reserveSpot -> checkReservations [label="Reserve spot"];
+    releaseSpot -> checkReservations [label="Release spot"];
+
+    // Additional attributes for visual clarity
+    rankdir=TB;
+    edge [dir=forward];
+}

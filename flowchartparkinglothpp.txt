@@ -1,0 +1,15 @@
+digraph G {
+    // Node definitions
+    ParkingLot [shape=record, label="{ ParkingLot | - spots : vector<ParkingSpot> | - totalRevenue : double | - adminCarNumberPlate : string | + reserveSpot() | + releaseSpot() | + checkInSpot() | + checkOutSpot() | + calculateRevenue() | + displayMenu() | + handleUserInput() | + enterMenu() | + displayAvailableSpots() | + displayAdminMenu() | + handleAdminInput() | + addParkingSpot() | + removeParkingSpot() | + findAvailableSpot() | + endProgram() | + saveToCSV() | + loadFromCSV() | + checkReservations() | + trackRevenue() | + displayRevenue() }"]
+    ParkingSpot [shape=record, label="{ ParkingSpot | - spotId : string | - hourlyRate : double | - isReserved : bool | - plateNumber : string | + reserve() | + release() | + checkIn() | + checkOut() }"]
+    AdminInputHandler [shape=record, label="{ AdminInputHandler | + handleAdminCommands() }"]
+    
+    // Friend class relationship
+    ParkingLot -> AdminInputHandler [label="friend class", style=dashed]
+    
+    // Inheritance or composition relationships
+    ParkingLot -> ParkingSpot [label="contains", style=dashed]
+    
+    // General structure and relationships
+    ParkingLot -> ParkingSpot [label="1..n"]
+}

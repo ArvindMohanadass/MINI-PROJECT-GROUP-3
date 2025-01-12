@@ -1,0 +1,44 @@
+digraph G {
+    rankdir=TB;  // Top to Bottom flow
+    
+    // Nodes
+    start [label="Start", shape=circle];
+    display_menu [label="Display Admin Menu", shape=box];
+    user_input [label="Get User Input", shape=box];
+    process_choice [label="Process Choice", shape=diamond];
+    
+    // Choices
+    case_1 [label="Case 1: View Parking Spots", shape=box];
+    case_2 [label="Case 2: View Total Revenue", shape=box];
+    case_3 [label="Case 3: Add Parking Spot", shape=box];
+    case_4 [label="Case 4: Remove Parking Spot", shape=box];
+    case_5 [label="Case 5: Display Revenue", shape=box];
+    case_6 [label="Case 6: Return to Car Entry", shape=box];
+    case_7 [label="Case 7: End Program", shape=box];
+    invalid_choice [label="Invalid Choice", shape=box];
+    
+    // Transitions
+    start -> display_menu;
+    display_menu -> user_input;
+    user_input -> process_choice;
+    
+    process_choice -> case_1 [label="1"];
+    process_choice -> case_2 [label="2"];
+    process_choice -> case_3 [label="3"];
+    process_choice -> case_4 [label="4"];
+    process_choice -> case_5 [label="5"];
+    process_choice -> case_6 [label="6"];
+    process_choice -> case_7 [label="7"];
+    process_choice -> invalid_choice [label="Invalid"];
+    
+    case_1 -> display_menu;
+    case_2 -> display_menu;
+    case_3 -> display_menu;
+    case_4 -> display_menu;
+    case_5 -> display_menu;
+    case_6 -> end_program;
+    case_7 -> end_program;
+    invalid_choice -> display_menu;
+    
+    end_program [label="End Program", shape=ellipse];
+}

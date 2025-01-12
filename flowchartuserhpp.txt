@@ -1,0 +1,12 @@
+digraph G {
+    node [shape=record];
+
+    // Define ParkingLot node
+    ParkingLot [label="{ ParkingLot | + (methods and members) }"];
+
+    // Define UserInputHandler node
+    UserInputHandler [label="{ UserInputHandler | + handleUserInput(ParkingLot&) }"];
+
+    // Relationship
+    UserInputHandler -> ParkingLot [label="Uses"];
+}

@@ -1,0 +1,8 @@
+digraph G {
+    node [shape=record];
+
+    MenuDisplay [label="{ MenuDisplay | + displayMenu(lot: ParkingLot): void | + displayAdminMenu(lot: ParkingLot): void }"];
+    ParkingLot [label="{ ParkingLot | ... }"]; // You can expand ParkingLot as needed
+
+    MenuDisplay -> ParkingLot [label="uses"];
+}

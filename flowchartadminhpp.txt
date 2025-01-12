@@ -1,0 +1,10 @@
+digraph AdminInputHandler {
+    rankdir=TB;  // Set the layout direction to top-to-bottom
+
+    node [shape=record, fontname="Helvetica"];
+
+    AdminInputHandler [label="{ AdminInputHandler | + handleAdminInput(ParkingLot&) }"];
+    ParkingLot [label="{ ParkingLot | }"];
+
+    AdminInputHandler -> ParkingLot [label="uses"];
+}
